@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>🍅</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+<style type="text/css">
+
+  body, h1, h2, h3, h4, p, ul {margin: 0;padding: 0; }
+
+  /* 커서 */
+
+    html {font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal; color: saddlebrown;
+    }
+    body {cursor: url('img/hand.png'), auto; background-color: #FAF574; }
+
+    .wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 150px;
+  margin: 20px;
+  border: 5px solid saddlebrown;
+  text-align: center;
+   border-radius: 20px;
+  background-color: white;
+  font-size: 2rem;
+}
+
+</style>
+<body>
+  <div class="wrap">
+    <div id="what" style="top: 10px; left: center; font-size: 2.5rem;">어떤 요리를 할까?</div>
+    <div id="box1" class="box">토마토 카프레제</div>
+    <div id="box2" class="box">토마토 빙수</div>
+    <div id="box3" class="box">토마토 달걀볶음</div>
+  </div>
+
+  <div id="Caprese" style="position: absolute; background-color: #16CC4B; top: 1000px; left: 50%; transform: translateX(-50%); display: none;"> <img src="./img/Caprese.png">
+  </div>
+
+  <div id="ice" style="position: absolute; background-color: #16CC4B; top: 1000px; left: 50%; transform: translateX(-50%); display: none;"> <img src="./img/ice.png">
+  </div>
+
+  <div id="egg" style="position: absolute; background-color: #16CC4B; top: 1000px; left: 50%; transform: translateX(-50%); display: none;"> <img src="./img/egg.png">
+  </div>
+
+  <script>
+  const boxes = document.querySelectorAll('.box');
+  
+  boxes.forEach(box => {
+    box.addEventListener('click', () => {
+      // 모든 박스를 숨김
+      boxes.forEach(otherBox => {
+        otherBox.style.display = 'none';
+      });
+
+      // 클릭된 박스만 보이게 함
+      box.style.display = 'block';
+    });
+  });
+
+
+  boxes.forEach(box => {
+    box.addEventListener('click', () => {
+      const boxId = box.id.toLowerCase();
+      let newBackgroundColor, newImageSrc;
+
+      switch (boxId) {
+        case 'box1':
+          newBackgroundColor = '#16CC4B';
+          newImageSrc = './img/Caprese.png';
+          break;
+        case 'box2':
+          newBackgroundColor = '#FBE69F';
+          newImageSrc = './img/ice.png';
+          break;
+        case 'box3':
+          newBackgroundColor = '#DC100C';
+          newImageSrc = './img/egg.png';
+          break;
+      }
+
+      box.style.backgroundColor = newBackgroundColor;
+      box.innerHTML = `<img src="${newImageSrc}">`;
+    });
+  });
+
+  // wrap 요소 선택
+const wrap = document.getElementById('Caprese');
+
+// wrap에서 targetDiv 제거
+wrap.removeChild(targetDiv);
+
+// 원하는 위치에 targetDiv 추가 (body에 추가하는 예시)
+document.body.appendChild(targetDiv);
+  </script>
+</body>
+</html>
